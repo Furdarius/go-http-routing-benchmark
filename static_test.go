@@ -172,16 +172,16 @@ var staticRoutes = []route{
 var (
 	staticHttpServeMux http.Handler
 
-	staticAce         http.Handler
-	staticBear        http.Handler
-	staticBeego       http.Handler
-	staticBone        http.Handler
-	staticDenco       http.Handler
-	staticGin         http.Handler
-	staticGocraftWeb  http.Handler
-	staticGoji        http.Handler
-	staticGojiv2      http.Handler
-	staticGoJsonRest  http.Handler
+	staticAce        http.Handler
+	staticBear       http.Handler
+	staticBeego      http.Handler
+	staticBone       http.Handler
+	staticDenco      http.Handler
+	staticGin        http.Handler
+	staticGocraftWeb http.Handler
+	staticGoji       http.Handler
+	staticGojiv2     http.Handler
+	// staticGoJsonRest  http.Handler
 	staticGoRestful   http.Handler
 	staticGorillaMux  http.Handler
 	staticHttpRouter  http.Handler
@@ -194,10 +194,10 @@ var (
 	staticPossum      http.Handler
 	staticR2router    http.Handler
 	staticRevel       http.Handler
-	staticTango       http.Handler
-	staticTigerTonic  http.Handler
-	staticTraffic     http.Handler
-	staticVulcan      http.Handler
+	// staticTango       http.Handler
+	staticTigerTonic http.Handler
+	staticTraffic    http.Handler
+	staticVulcan     http.Handler
 	// staticEcho        http.Handler
 	// staticRivet       http.Handler
 	// staticZeus        http.Handler
@@ -244,9 +244,9 @@ func init() {
 	calcMem("Gojiv2", func() {
 		staticGojiv2 = loadGojiv2(staticRoutes)
 	})
-	calcMem("GoJsonRest", func() {
-		staticGoJsonRest = loadGoJsonRest(staticRoutes)
-	})
+	// calcMem("GoJsonRest", func() {
+	// 	staticGoJsonRest = loadGoJsonRest(staticRoutes)
+	// })
 	calcMem("GoRestful", func() {
 		staticGoRestful = loadGoRestful(staticRoutes)
 	})
@@ -286,9 +286,9 @@ func init() {
 	// calcMem("Rivet", func() {
 	// 	staticRivet = loadRivet(staticRoutes)
 	// })
-	calcMem("Tango", func() {
-		staticTango = loadTango(staticRoutes)
-	})
+	// calcMem("Tango", func() {
+	// 	staticTango = loadTango(staticRoutes)
+	// })
 	calcMem("TigerTonic", func() {
 		staticTigerTonic = loadTigerTonic(staticRoutes)
 	})
@@ -341,9 +341,10 @@ func BenchmarkGoji_StaticAll(b *testing.B) {
 func BenchmarkGojiv2_StaticAll(b *testing.B) {
 	benchRoutes(b, staticGojiv2, staticRoutes)
 }
-func BenchmarkGoJsonRest_StaticAll(b *testing.B) {
-	benchRoutes(b, staticGoJsonRest, staticRoutes)
-}
+
+// func BenchmarkGoJsonRest_StaticAll(b *testing.B) {
+// 	benchRoutes(b, staticGoJsonRest, staticRoutes)
+// }
 func BenchmarkGoRestful_StaticAll(b *testing.B) {
 	benchRoutes(b, staticGoRestful, staticRoutes)
 }
@@ -384,9 +385,9 @@ func BenchmarkRevel_StaticAll(b *testing.B) {
 // func BenchmarkRivet_StaticAll(b *testing.B) {
 // 	benchRoutes(b, staticRivet, staticRoutes)
 // }
-func BenchmarkTango_StaticAll(b *testing.B) {
-	benchRoutes(b, staticTango, staticRoutes)
-}
+// func BenchmarkTango_StaticAll(b *testing.B) {
+// 	benchRoutes(b, staticTango, staticRoutes)
+// }
 func BenchmarkTigerTonic_StaticAll(b *testing.B) {
 	benchRoutes(b, staticTigerTonic, staticRoutes)
 }

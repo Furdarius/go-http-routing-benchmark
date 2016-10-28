@@ -18,7 +18,7 @@ import (
 	// - Make a pull request (without benchmark results) at
 	//   https://github.com/julienschmidt/go-http-routing-benchmark
 	"github.com/Unknwon/macaron"
-	"github.com/ant0ine/go-json-rest/rest"
+	// "github.com/ant0ine/go-json-rest/rest"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
 	"github.com/bmizerany/pat"
@@ -32,8 +32,8 @@ import (
 	"github.com/gocraft/web"
 	"github.com/gorilla/mux"
 	"github.com/julienschmidt/httprouter"
-	llog "github.com/lunny/log"
-	"github.com/lunny/tango"
+	// llog "github.com/lunny/log"
+	// "github.com/lunny/tango"
 	vulcan "github.com/mailgun/route"
 	"github.com/mikespook/possum"
 	possumrouter "github.com/mikespook/possum/router"
@@ -93,7 +93,7 @@ func init() {
 	initGin()
 	initMartini()
 	initRevel()
-	initTango()
+	//initTango()
 	initTraffic()
 }
 
@@ -586,48 +586,48 @@ func loadGojiv2Single(method, path string, handler gojiv2.HandlerFunc) http.Hand
 }
 
 // go-json-rest/rest
-func goJsonRestHandler(w rest.ResponseWriter, req *rest.Request) {}
+// func goJsonRestHandler(w rest.ResponseWriter, req *rest.Request) {}
 
-func goJsonRestHandlerWrite(w rest.ResponseWriter, req *rest.Request) {
-	io.WriteString(w.(io.Writer), req.PathParam("name"))
-}
+// func goJsonRestHandlerWrite(w rest.ResponseWriter, req *rest.Request) {
+// 	io.WriteString(w.(io.Writer), req.PathParam("name"))
+// }
 
-func goJsonRestHandlerTest(w rest.ResponseWriter, req *rest.Request) {
-	io.WriteString(w.(io.Writer), req.RequestURI)
-}
+// func goJsonRestHandlerTest(w rest.ResponseWriter, req *rest.Request) {
+// 	io.WriteString(w.(io.Writer), req.RequestURI)
+// }
 
-func loadGoJsonRest(routes []route) http.Handler {
-	h := goJsonRestHandler
-	if loadTestHandler {
-		h = goJsonRestHandlerTest
-	}
+// func loadGoJsonRest(routes []route) http.Handler {
+// 	h := goJsonRestHandler
+// 	if loadTestHandler {
+// 		h = goJsonRestHandlerTest
+// 	}
 
-	api := rest.NewApi()
-	restRoutes := make([]*rest.Route, 0, len(routes))
-	for _, route := range routes {
-		restRoutes = append(restRoutes,
-			&rest.Route{route.method, route.path, h},
-		)
-	}
-	router, err := rest.MakeRouter(restRoutes...)
-	if err != nil {
-		log.Fatal(err)
-	}
-	api.SetApp(router)
-	return api.MakeHandler()
-}
+// 	api := rest.NewApi()
+// 	restRoutes := make([]*rest.Route, 0, len(routes))
+// 	for _, route := range routes {
+// 		restRoutes = append(restRoutes,
+// 			&rest.Route{route.method, route.path, h},
+// 		)
+// 	}
+// 	router, err := rest.MakeRouter(restRoutes...)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	api.SetApp(router)
+// 	return api.MakeHandler()
+// }
 
-func loadGoJsonRestSingle(method, path string, hfunc rest.HandlerFunc) http.Handler {
-	api := rest.NewApi()
-	router, err := rest.MakeRouter(
-		&rest.Route{method, path, hfunc},
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
-	api.SetApp(router)
-	return api.MakeHandler()
-}
+// func loadGoJsonRestSingle(method, path string, hfunc rest.HandlerFunc) http.Handler {
+// 	api := rest.NewApi()
+// 	router, err := rest.MakeRouter(
+// 		&rest.Route{method, path, hfunc},
+// 	)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	api.SetApp(router)
+// 	return api.MakeHandler()
+// }
 
 // go-restful
 func goRestfulHandler(r *restful.Request, w *restful.Response) {}
@@ -1283,39 +1283,39 @@ func loadRevelSingle(method, path, action string) http.Handler {
 // }
 
 // Tango
-func tangoHandler(ctx *tango.Context) {}
+// func tangoHandler(ctx *tango.Context) {}
 
-func tangoHandlerWrite(ctx *tango.Context) {
-	ctx.Write([]byte(ctx.Params().Get(":name")))
-}
+// func tangoHandlerWrite(ctx *tango.Context) {
+// 	ctx.Write([]byte(ctx.Params().Get(":name")))
+// }
 
-func tangoHandlerTest(ctx *tango.Context) {
-	ctx.Write([]byte(ctx.Req().RequestURI))
-}
+// func tangoHandlerTest(ctx *tango.Context) {
+// 	ctx.Write([]byte(ctx.Req().RequestURI))
+// }
 
-func initTango() {
-	llog.SetOutput(new(mockResponseWriter))
-	llog.SetOutputLevel(llog.Lnone)
-}
+// func initTango() {
+// 	llog.SetOutput(new(mockResponseWriter))
+// 	llog.SetOutputLevel(llog.Lnone)
+// }
 
-func loadTango(routes []route) http.Handler {
-	h := tangoHandler
-	if loadTestHandler {
-		h = tangoHandlerTest
-	}
+// func loadTango(routes []route) http.Handler {
+// 	h := tangoHandler
+// 	if loadTestHandler {
+// 		h = tangoHandlerTest
+// 	}
 
-	tg := tango.NewWithLog(llog.Std)
-	for _, route := range routes {
-		tg.Route(route.method, route.path, h)
-	}
-	return tg
-}
+// 	tg := tango.NewWithLog(llog.Std)
+// 	for _, route := range routes {
+// 		tg.Route(route.method, route.path, h)
+// 	}
+// 	return tg
+// }
 
-func loadTangoSingle(method, path string, handler func(*tango.Context)) http.Handler {
-	tg := tango.NewWithLog(llog.Std)
-	tg.Route(method, path, handler)
-	return tg
-}
+// func loadTangoSingle(method, path string, handler func(*tango.Context)) http.Handler {
+// 	tg := tango.NewWithLog(llog.Std)
+// 	tg.Route(method, path, handler)
+// 	return tg
+// }
 
 // Tiger Tonic
 func tigerTonicHandlerWrite(w http.ResponseWriter, r *http.Request) {

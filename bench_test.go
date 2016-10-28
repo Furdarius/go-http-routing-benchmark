@@ -158,12 +158,13 @@ func BenchmarkGojiv2_Param(b *testing.B) {
 	r, _ := http.NewRequest("GET", "/user/gordon", nil)
 	benchRequest(b, router, r)
 }
-func BenchmarkGoJsonRest_Param(b *testing.B) {
-	router := loadGoJsonRestSingle("GET", "/user/:name", goJsonRestHandler)
 
-	r, _ := http.NewRequest("GET", "/user/gordon", nil)
-	benchRequest(b, router, r)
-}
+// func BenchmarkGoJsonRest_Param(b *testing.B) {
+// 	router := loadGoJsonRestSingle("GET", "/user/:name", goJsonRestHandler)
+
+// 	r, _ := http.NewRequest("GET", "/user/gordon", nil)
+// 	benchRequest(b, router, r)
+// }
 func BenchmarkGoRestful_Param(b *testing.B) {
 	router := loadGoRestfulSingle("GET", "/user/{name}", goRestfulHandler)
 
@@ -249,12 +250,12 @@ func BenchmarkRevel_Param(b *testing.B) {
 // 	r, _ := http.NewRequest("GET", "/user/gordon", nil)
 // 	benchRequest(b, router, r)
 // }
-func BenchmarkTango_Param(b *testing.B) {
-	router := loadTangoSingle("GET", "/user/:name", tangoHandler)
+// func BenchmarkTango_Param(b *testing.B) {
+// 	router := loadTangoSingle("GET", "/user/:name", tangoHandler)
 
-	r, _ := http.NewRequest("GET", "/user/gordon", nil)
-	benchRequest(b, router, r)
-}
+// 	r, _ := http.NewRequest("GET", "/user/gordon", nil)
+// 	benchRequest(b, router, r)
+// }
 func BenchmarkTigerTonic_Param(b *testing.B) {
 	router := loadTigerTonicSingle("GET", "/user/{name}", httpHandlerFunc)
 
@@ -347,12 +348,13 @@ func BenchmarkGojiv2_Param5(b *testing.B) {
 	r, _ := http.NewRequest("GET", fiveRoute, nil)
 	benchRequest(b, router, r)
 }
-func BenchmarkGoJsonRest_Param5(b *testing.B) {
-	handler := loadGoJsonRestSingle("GET", fiveColon, goJsonRestHandler)
 
-	r, _ := http.NewRequest("GET", fiveRoute, nil)
-	benchRequest(b, handler, r)
-}
+// func BenchmarkGoJsonRest_Param5(b *testing.B) {
+// 	handler := loadGoJsonRestSingle("GET", fiveColon, goJsonRestHandler)
+
+// 	r, _ := http.NewRequest("GET", fiveRoute, nil)
+// 	benchRequest(b, handler, r)
+// }
 func BenchmarkGoRestful_Param5(b *testing.B) {
 	router := loadGoRestfulSingle("GET", fiveBrace, goRestfulHandler)
 
@@ -437,12 +439,12 @@ func BenchmarkRevel_Param5(b *testing.B) {
 // 	r, _ := http.NewRequest("GET", fiveRoute, nil)
 // 	benchRequest(b, router, r)
 // }
-func BenchmarkTango_Param5(b *testing.B) {
-	router := loadTangoSingle("GET", fiveColon, tangoHandler)
+// func BenchmarkTango_Param5(b *testing.B) {
+// 	router := loadTangoSingle("GET", fiveColon, tangoHandler)
 
-	r, _ := http.NewRequest("GET", fiveRoute, nil)
-	benchRequest(b, router, r)
-}
+// 	r, _ := http.NewRequest("GET", fiveRoute, nil)
+// 	benchRequest(b, router, r)
+// }
 func BenchmarkTigerTonic_Param5(b *testing.B) {
 	router := loadTigerTonicSingle("GET", fiveBrace, httpHandlerFunc)
 
@@ -535,12 +537,13 @@ func BenchmarkGojiv2_Param20(b *testing.B) {
 	r, _ := http.NewRequest("GET", twentyRoute, nil)
 	benchRequest(b, router, r)
 }
-func BenchmarkGoJsonRest_Param20(b *testing.B) {
-	handler := loadGoJsonRestSingle("GET", twentyColon, goJsonRestHandler)
 
-	r, _ := http.NewRequest("GET", twentyRoute, nil)
-	benchRequest(b, handler, r)
-}
+// func BenchmarkGoJsonRest_Param20(b *testing.B) {
+// 	handler := loadGoJsonRestSingle("GET", twentyColon, goJsonRestHandler)
+
+// 	r, _ := http.NewRequest("GET", twentyRoute, nil)
+// 	benchRequest(b, handler, r)
+// }
 func BenchmarkGoRestful_Param20(b *testing.B) {
 	handler := loadGoRestfulSingle("GET", twentyBrace, goRestfulHandler)
 
@@ -625,12 +628,12 @@ func BenchmarkRevel_Param20(b *testing.B) {
 // 	r, _ := http.NewRequest("GET", twentyRoute, nil)
 // 	benchRequest(b, router, r)
 // }
-func BenchmarkTango_Param20(b *testing.B) {
-	router := loadTangoSingle("GET", twentyColon, tangoHandler)
+// func BenchmarkTango_Param20(b *testing.B) {
+// 	router := loadTangoSingle("GET", twentyColon, tangoHandler)
 
-	r, _ := http.NewRequest("GET", twentyRoute, nil)
-	benchRequest(b, router, r)
-}
+// 	r, _ := http.NewRequest("GET", twentyRoute, nil)
+// 	benchRequest(b, router, r)
+// }
 func BenchmarkTigerTonic_Param20(b *testing.B) {
 	router := loadTigerTonicSingle("GET", twentyBrace, httpHandlerFunc)
 
@@ -719,12 +722,13 @@ func BenchmarkGojiv2_ParamWrite(b *testing.B) {
 	r, _ := http.NewRequest("GET", "/user/gordon", nil)
 	benchRequest(b, router, r)
 }
-func BenchmarkGoJsonRest_ParamWrite(b *testing.B) {
-	handler := loadGoJsonRestSingle("GET", "/user/:name", goJsonRestHandlerWrite)
 
-	r, _ := http.NewRequest("GET", "/user/gordon", nil)
-	benchRequest(b, handler, r)
-}
+// func BenchmarkGoJsonRest_ParamWrite(b *testing.B) {
+// 	handler := loadGoJsonRestSingle("GET", "/user/:name", goJsonRestHandlerWrite)
+
+// 	r, _ := http.NewRequest("GET", "/user/gordon", nil)
+// 	benchRequest(b, handler, r)
+// }
 func BenchmarkGoRestful_ParamWrite(b *testing.B) {
 	handler := loadGoRestfulSingle("GET", "/user/{name}", goRestfulHandlerWrite)
 
@@ -809,12 +813,12 @@ func BenchmarkRevel_ParamWrite(b *testing.B) {
 // 	r, _ := http.NewRequest("GET", "/user/gordon", nil)
 // 	benchRequest(b, router, r)
 // }
-func BenchmarkTango_ParamWrite(b *testing.B) {
-	router := loadTangoSingle("GET", "/user/:name", tangoHandlerWrite)
+// func BenchmarkTango_ParamWrite(b *testing.B) {
+// 	router := loadTangoSingle("GET", "/user/:name", tangoHandlerWrite)
 
-	r, _ := http.NewRequest("GET", "/user/gordon", nil)
-	benchRequest(b, router, r)
-}
+// 	r, _ := http.NewRequest("GET", "/user/gordon", nil)
+// 	benchRequest(b, router, r)
+// }
 func BenchmarkTigerTonic_ParamWrite(b *testing.B) {
 	router := loadTigerTonicSingle(
 		"GET", "/user/{name}",

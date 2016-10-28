@@ -56,16 +56,16 @@ var parseAPI = []route{
 }
 
 var (
-	parseAce         http.Handler
-	parseBear        http.Handler
-	parseBeego       http.Handler
-	parseBone        http.Handler
-	parseDenco       http.Handler
-	parseGin         http.Handler
-	parseGocraftWeb  http.Handler
-	parseGoji        http.Handler
-	parseGojiv2      http.Handler
-	parseGoJsonRest  http.Handler
+	parseAce        http.Handler
+	parseBear       http.Handler
+	parseBeego      http.Handler
+	parseBone       http.Handler
+	parseDenco      http.Handler
+	parseGin        http.Handler
+	parseGocraftWeb http.Handler
+	parseGoji       http.Handler
+	parseGojiv2     http.Handler
+	// parseGoJsonRest  http.Handler
 	parseGoRestful   http.Handler
 	parseGorillaMux  http.Handler
 	parseHttpRouter  http.Handler
@@ -78,10 +78,10 @@ var (
 	parsePossum      http.Handler
 	parseR2router    http.Handler
 	parseRevel       http.Handler
-	parseTango       http.Handler
-	parseTigerTonic  http.Handler
-	parseTraffic     http.Handler
-	parseVulcan      http.Handler
+	// parseTango       http.Handler
+	parseTigerTonic http.Handler
+	parseTraffic    http.Handler
+	parseVulcan     http.Handler
 	// parseEcho        http.Handler
 	// parseRivet       http.Handler
 	// parseZeus        http.Handler
@@ -120,9 +120,9 @@ func init() {
 	calcMem("Gojiv2", func() {
 		parseGojiv2 = loadGojiv2(parseAPI)
 	})
-	calcMem("GoJsonRest", func() {
-		parseGoJsonRest = loadGoJsonRest(parseAPI)
-	})
+	// calcMem("GoJsonRest", func() {
+	// 	parseGoJsonRest = loadGoJsonRest(parseAPI)
+	// })
 	calcMem("GoRestful", func() {
 		parseGoRestful = loadGoRestful(parseAPI)
 	})
@@ -162,9 +162,9 @@ func init() {
 	// calcMem("Rivet", func() {
 	// 	parseRivet = loadRivet(parseAPI)
 	// })
-	calcMem("Tango", func() {
-		parseTango = loadTango(parseAPI)
-	})
+	// calcMem("Tango", func() {
+	// 	parseTango = loadTango(parseAPI)
+	// })
 	calcMem("TigerTonic", func() {
 		parseTigerTonic = loadTigerTonic(parseAPI)
 	})
@@ -223,10 +223,11 @@ func BenchmarkGojiv2_ParseStatic(b *testing.B) {
 	req, _ := http.NewRequest("GET", "/1/users", nil)
 	benchRequest(b, parseGojiv2, req)
 }
-func BenchmarkGoJsonRest_ParseStatic(b *testing.B) {
-	req, _ := http.NewRequest("GET", "/1/users", nil)
-	benchRequest(b, parseGoJsonRest, req)
-}
+
+// func BenchmarkGoJsonRest_ParseStatic(b *testing.B) {
+// 	req, _ := http.NewRequest("GET", "/1/users", nil)
+// 	benchRequest(b, parseGoJsonRest, req)
+// }
 func BenchmarkGoRestful_ParseStatic(b *testing.B) {
 	req, _ := http.NewRequest("GET", "/1/users", nil)
 	benchRequest(b, parseGoRestful, req)
@@ -280,10 +281,10 @@ func BenchmarkRevel_ParseStatic(b *testing.B) {
 // 	req, _ := http.NewRequest("GET", "/1/users", nil)
 // 	benchRequest(b, parseRivet, req)
 // }
-func BenchmarkTango_ParseStatic(b *testing.B) {
-	req, _ := http.NewRequest("GET", "/1/users", nil)
-	benchRequest(b, parseTango, req)
-}
+// func BenchmarkTango_ParseStatic(b *testing.B) {
+// 	req, _ := http.NewRequest("GET", "/1/users", nil)
+// 	benchRequest(b, parseTango, req)
+// }
 func BenchmarkTigerTonic_ParseStatic(b *testing.B) {
 	req, _ := http.NewRequest("GET", "/1/users", nil)
 	benchRequest(b, parseTigerTonic, req)
@@ -344,10 +345,11 @@ func BenchmarkGojiv2_ParseParam(b *testing.B) {
 	req, _ := http.NewRequest("GET", "/1/classes/go", nil)
 	benchRequest(b, parseGojiv2, req)
 }
-func BenchmarkGoJsonRest_ParseParam(b *testing.B) {
-	req, _ := http.NewRequest("GET", "/1/classes/go", nil)
-	benchRequest(b, parseGoJsonRest, req)
-}
+
+// func BenchmarkGoJsonRest_ParseParam(b *testing.B) {
+// 	req, _ := http.NewRequest("GET", "/1/classes/go", nil)
+// 	benchRequest(b, parseGoJsonRest, req)
+// }
 func BenchmarkGoRestful_ParseParam(b *testing.B) {
 	req, _ := http.NewRequest("GET", "/1/classes/go", nil)
 	benchRequest(b, parseGoRestful, req)
@@ -401,10 +403,10 @@ func BenchmarkRevel_ParseParam(b *testing.B) {
 // 	req, _ := http.NewRequest("GET", "/1/classes/go", nil)
 // 	benchRequest(b, parseRivet, req)
 // }
-func BenchmarkTango_ParseParam(b *testing.B) {
-	req, _ := http.NewRequest("GET", "/1/classes/go", nil)
-	benchRequest(b, parseTango, req)
-}
+// func BenchmarkTango_ParseParam(b *testing.B) {
+// 	req, _ := http.NewRequest("GET", "/1/classes/go", nil)
+// 	benchRequest(b, parseTango, req)
+// }
 func BenchmarkTigerTonic_ParseParam(b *testing.B) {
 	req, _ := http.NewRequest("GET", "/1/classes/go", nil)
 	benchRequest(b, parseTigerTonic, req)
@@ -465,10 +467,11 @@ func BenchmarkGojiv2_Parse2Params(b *testing.B) {
 	req, _ := http.NewRequest("GET", "/1/classes/go/123456789", nil)
 	benchRequest(b, parseGojiv2, req)
 }
-func BenchmarkGoJsonRest_Parse2Params(b *testing.B) {
-	req, _ := http.NewRequest("GET", "/1/classes/go/123456789", nil)
-	benchRequest(b, parseGoJsonRest, req)
-}
+
+// func BenchmarkGoJsonRest_Parse2Params(b *testing.B) {
+// 	req, _ := http.NewRequest("GET", "/1/classes/go/123456789", nil)
+// 	benchRequest(b, parseGoJsonRest, req)
+// }
 func BenchmarkGoRestful_Parse2Params(b *testing.B) {
 	req, _ := http.NewRequest("GET", "/1/classes/go/123456789", nil)
 	benchRequest(b, parseGoRestful, req)
@@ -522,10 +525,10 @@ func BenchmarkRevel_Parse2Params(b *testing.B) {
 // 	req, _ := http.NewRequest("GET", "/1/classes/go/123456789", nil)
 // 	benchRequest(b, parseRivet, req)
 // }
-func BenchmarkTango_Parse2Params(b *testing.B) {
-	req, _ := http.NewRequest("GET", "/1/classes/go/123456789", nil)
-	benchRequest(b, parseTango, req)
-}
+// func BenchmarkTango_Parse2Params(b *testing.B) {
+// 	req, _ := http.NewRequest("GET", "/1/classes/go/123456789", nil)
+// 	benchRequest(b, parseTango, req)
+// }
 func BenchmarkTigerTonic_Parse2Params(b *testing.B) {
 	req, _ := http.NewRequest("GET", "/1/classes/go/123456789", nil)
 	benchRequest(b, parseTigerTonic, req)
@@ -576,9 +579,10 @@ func BenchmarkGoji_ParseAll(b *testing.B) {
 func BenchmarkGojiv2_ParseAll(b *testing.B) {
 	benchRoutes(b, parseGojiv2, parseAPI)
 }
-func BenchmarkGoJsonRest_ParseAll(b *testing.B) {
-	benchRoutes(b, parseGoJsonRest, parseAPI)
-}
+
+// func BenchmarkGoJsonRest_ParseAll(b *testing.B) {
+// 	benchRoutes(b, parseGoJsonRest, parseAPI)
+// }
 func BenchmarkGoRestful_ParseAll(b *testing.B) {
 	benchRoutes(b, parseGoRestful, parseAPI)
 }
@@ -619,9 +623,9 @@ func BenchmarkRevel_ParseAll(b *testing.B) {
 // func BenchmarkRivet_ParseAll(b *testing.B) {
 // 	benchRoutes(b, parseRivet, parseAPI)
 // }
-func BenchmarkTango_ParseAll(b *testing.B) {
-	benchRoutes(b, parseTango, parseAPI)
-}
+// func BenchmarkTango_ParseAll(b *testing.B) {
+// 	benchRoutes(b, parseTango, parseAPI)
+// }
 func BenchmarkTigerTonic_ParseAll(b *testing.B) {
 	benchRoutes(b, parseTigerTonic, parseAPI)
 }

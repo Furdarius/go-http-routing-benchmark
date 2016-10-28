@@ -274,16 +274,16 @@ var githubAPI = []route{
 }
 
 var (
-	githubAce         http.Handler
-	githubBear        http.Handler
-	githubBeego       http.Handler
-	githubBone        http.Handler
-	githubDenco       http.Handler
-	githubGin         http.Handler
-	githubGocraftWeb  http.Handler
-	githubGoji        http.Handler
-	githubGojiv2      http.Handler
-	githubGoJsonRest  http.Handler
+	githubAce        http.Handler
+	githubBear       http.Handler
+	githubBeego      http.Handler
+	githubBone       http.Handler
+	githubDenco      http.Handler
+	githubGin        http.Handler
+	githubGocraftWeb http.Handler
+	githubGoji       http.Handler
+	githubGojiv2     http.Handler
+	// githubGoJsonRest  http.Handler
 	githubGoRestful   http.Handler
 	githubGorillaMux  http.Handler
 	githubHttpRouter  http.Handler
@@ -296,10 +296,10 @@ var (
 	githubPossum      http.Handler
 	githubR2router    http.Handler
 	githubRevel       http.Handler
-	githubTango       http.Handler
-	githubTigerTonic  http.Handler
-	githubTraffic     http.Handler
-	githubVulcan      http.Handler
+	// githubTango       http.Handler
+	githubTigerTonic http.Handler
+	githubTraffic    http.Handler
+	githubVulcan     http.Handler
 	// githubEcho        http.Handler
 	// githubRivet       http.Handler
 	// githubZeus        http.Handler
@@ -338,9 +338,9 @@ func init() {
 	calcMem("Gojiv2", func() {
 		githubGojiv2 = loadGojiv2(githubAPI)
 	})
-	calcMem("GoJsonRest", func() {
-		githubGoJsonRest = loadGoJsonRest(githubAPI)
-	})
+	// calcMem("GoJsonRest", func() {
+	// 	githubGoJsonRest = loadGoJsonRest(githubAPI)
+	// })
 	calcMem("GoRestful", func() {
 		githubGoRestful = loadGoRestful(githubAPI)
 	})
@@ -380,9 +380,9 @@ func init() {
 	// calcMem("Rivet", func() {
 	// 	githubRivet = loadRivet(githubAPI)
 	// })
-	calcMem("Tango", func() {
-		githubTango = loadTango(githubAPI)
-	})
+	// calcMem("Tango", func() {
+	// 	githubTango = loadTango(githubAPI)
+	// })
 	calcMem("TigerTonic", func() {
 		githubTigerTonic = loadTigerTonic(githubAPI)
 	})
@@ -445,10 +445,11 @@ func BenchmarkGoRestful_GithubStatic(b *testing.B) {
 	req, _ := http.NewRequest("GET", "/user/repos", nil)
 	benchRequest(b, githubGoRestful, req)
 }
-func BenchmarkGoJsonRest_GithubStatic(b *testing.B) {
-	req, _ := http.NewRequest("GET", "/user/repos", nil)
-	benchRequest(b, githubGoJsonRest, req)
-}
+
+// func BenchmarkGoJsonRest_GithubStatic(b *testing.B) {
+// 	req, _ := http.NewRequest("GET", "/user/repos", nil)
+// 	benchRequest(b, githubGoJsonRest, req)
+// }
 func BenchmarkGorillaMux_GithubStatic(b *testing.B) {
 	req, _ := http.NewRequest("GET", "/user/repos", nil)
 	benchRequest(b, githubGorillaMux, req)
@@ -498,10 +499,10 @@ func BenchmarkRevel_GithubStatic(b *testing.B) {
 // 	req, _ := http.NewRequest("GET", "/user/repos", nil)
 // 	benchRequest(b, githubRivet, req)
 // }
-func BenchmarkTango_GithubStatic(b *testing.B) {
-	req, _ := http.NewRequest("GET", "/user/repos", nil)
-	benchRequest(b, githubTango, req)
-}
+// func BenchmarkTango_GithubStatic(b *testing.B) {
+// 	req, _ := http.NewRequest("GET", "/user/repos", nil)
+// 	benchRequest(b, githubTango, req)
+// }
 func BenchmarkTigerTonic_GithubStatic(b *testing.B) {
 	req, _ := http.NewRequest("GET", "/user/repos", nil)
 	benchRequest(b, githubTigerTonic, req)
@@ -562,10 +563,11 @@ func BenchmarkGojiv2_GithubParam(b *testing.B) {
 	req, _ := http.NewRequest("GET", "/repos/julienschmidt/httprouter/stargazers", nil)
 	benchRequest(b, githubGojiv2, req)
 }
-func BenchmarkGoJsonRest_GithubParam(b *testing.B) {
-	req, _ := http.NewRequest("GET", "/repos/julienschmidt/httprouter/stargazers", nil)
-	benchRequest(b, githubGoJsonRest, req)
-}
+
+// func BenchmarkGoJsonRest_GithubParam(b *testing.B) {
+// 	req, _ := http.NewRequest("GET", "/repos/julienschmidt/httprouter/stargazers", nil)
+// 	benchRequest(b, githubGoJsonRest, req)
+// }
 func BenchmarkGoRestful_GithubParam(b *testing.B) {
 	req, _ := http.NewRequest("GET", "/repos/julienschmidt/httprouter/stargazers", nil)
 	benchRequest(b, githubGoRestful, req)
@@ -619,10 +621,10 @@ func BenchmarkRevel_GithubParam(b *testing.B) {
 // 	req, _ := http.NewRequest("GET", "/repos/julienschmidt/httprouter/stargazers", nil)
 // 	benchRequest(b, githubRivet, req)
 // }
-func BenchmarkTango_GithubParam(b *testing.B) {
-	req, _ := http.NewRequest("GET", "/repos/julienschmidt/httprouter/stargazers", nil)
-	benchRequest(b, githubTango, req)
-}
+// func BenchmarkTango_GithubParam(b *testing.B) {
+// 	req, _ := http.NewRequest("GET", "/repos/julienschmidt/httprouter/stargazers", nil)
+// 	benchRequest(b, githubTango, req)
+// }
 func BenchmarkTigerTonic_GithubParam(b *testing.B) {
 	req, _ := http.NewRequest("GET", "/repos/julienschmidt/httprouter/stargazers", nil)
 	benchRequest(b, githubTigerTonic, req)
@@ -673,9 +675,10 @@ func BenchmarkGoji_GithubAll(b *testing.B) {
 func BenchmarkGojiv2_GithubAll(b *testing.B) {
 	benchRoutes(b, githubGojiv2, githubAPI)
 }
-func BenchmarkGoJsonRest_GithubAll(b *testing.B) {
-	benchRoutes(b, githubGoJsonRest, githubAPI)
-}
+
+// func BenchmarkGoJsonRest_GithubAll(b *testing.B) {
+// 	benchRoutes(b, githubGoJsonRest, githubAPI)
+// }
 func BenchmarkGoRestful_GithubAll(b *testing.B) {
 	benchRoutes(b, githubGoRestful, githubAPI)
 }
@@ -716,9 +719,9 @@ func BenchmarkRevel_GithubAll(b *testing.B) {
 // func BenchmarkRivet_GithubAll(b *testing.B) {
 // 	benchRoutes(b, githubRivet, githubAPI)
 // }
-func BenchmarkTango_GithubAll(b *testing.B) {
-	benchRoutes(b, githubTango, githubAPI)
-}
+// func BenchmarkTango_GithubAll(b *testing.B) {
+// 	benchRoutes(b, githubTango, githubAPI)
+// }
 func BenchmarkTigerTonic_GithubAll(b *testing.B) {
 	benchRoutes(b, githubTigerTonic, githubAPI)
 }
